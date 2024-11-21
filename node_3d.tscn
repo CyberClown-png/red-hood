@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://qv5oaf30fh4h"]
+
+[ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
+[ext_resource type="Texture2D" uid="uid://0dg3veniq1j" path="res://sharerTextures/bayer4tile8.png" id="2_wnclq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
+shader = ExtResource("2_21lab")
+shader_parameter/u_contrast = 1.035
+shader_parameter/u_offset = -0.065
+shader_parameter/u_dither_size = 1
+shader_parameter/u_dither_tex = ExtResource("2_wnclq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulrma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getab"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iecu5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mhl17"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_l32fb")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1200, 900)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.984744, 0.174009, 0, -0.174009, 0.984744, 0.849679, 1.77506, 2.27225)
+
+[node name="Primitives" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(0.455248, 0.572234, 0.682127, -0.111581, 0.796749, -0.593921, -0.883345, 0.194269, 0.426569, 0, 0.896752, -0.0690606)
+mesh = SubResource("BoxMesh_ulrma")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_getab")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_iecu5")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8163, 1.03097, 0.207833)
+mesh = SubResource("SphereMesh_mhl17")
+skeleton = NodePath("../../../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.916537, -0.152761, -0.369627, 0.398407, 0.267613, 0.8773, -0.0350998, -0.95134, 0.306138, -0.163984, 4.1184, 0)
+light_bake_mode = 0
