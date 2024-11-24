@@ -2,22 +2,17 @@
 
 [ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
 [ext_resource type="Texture2D" uid="uid://0dg3veniq1j" path="res://sharerTextures/bayer4tile8.png" id="2_wnclq"]
+[ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="3_d4dkp"]
+[ext_resource type="PackedScene" uid="uid://dbuho66mu1s23" path="res://scenes/player.tscn" id="3_uya1f"]
+[ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="4_vb7cg"]
+[ext_resource type="Texture2D" uid="uid://cmdp44b5jt2yr" path="res://addons/level_block/tileset.png" id="5_r7khi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
 shader = ExtResource("2_21lab")
-shader_parameter/u_contrast = 1.035
+shader_parameter/u_contrast = 0.89
 shader_parameter/u_offset = -0.065
 shader_parameter/u_dither_size = 1
 shader_parameter/u_dither_tex = ExtResource("2_wnclq")
-
-[sub_resource type="BoxMesh" id="BoxMesh_ulrma"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getab"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_iecu5"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_mhl17"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -28,30 +23,93 @@ offset_bottom = 40.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1200, 900)
+size = Vector2i(400, 320)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.984744, 0.174009, 0, -0.174009, 0.984744, 0.849679, 1.77506, 2.27225)
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_uya1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
-[node name="Primitives" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="MAP" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
-transform = Transform3D(0.455248, 0.572234, 0.682127, -0.111581, 0.796749, -0.593921, -0.883345, 0.194269, 0.426569, 0, 0.896752, -0.0690606)
-mesh = SubResource("BoxMesh_ulrma")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_getab")
+[node name="Tiles" type="Node3D" parent="MAP"]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("PlaneMesh_iecu5")
-skeleton = NodePath("../MeshInstance3D")
+[node name="LevelBlock" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+north_face = 0
+east_face = 0
+bottom_face = 0
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8163, 1.03097, 0.207833)
-mesh = SubResource("SphereMesh_mhl17")
-skeleton = NodePath("../../../..")
+[node name="LevelBlock2" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+north_face = 0
+west_face = 0
+bottom_face = 0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.916537, -0.152761, -0.369627, 0.398407, 0.267613, 0.8773, -0.0350998, -0.95134, 0.306138, -0.163984, 4.1184, 0)
-light_bake_mode = 0
+[node name="LevelBlock3" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+north_face = 0
+bottom_face = 0
+
+[node name="LevelBlock4" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+east_face = 0
+bottom_face = 0
+
+[node name="LevelBlock5" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+bottom_face = 0
+
+[node name="LevelBlock6" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+west_face = 3
+bottom_face = 0
+
+[node name="LevelBlock7" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 4)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+south_face = 0
+bottom_face = 0
+
+[node name="LevelBlock8" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 4)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+south_face = 0
+west_face = 0
+bottom_face = 0
+
+[node name="LevelBlock9" type="Node3D" parent="MAP/Tiles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
+script = ExtResource("3_d4dkp")
+material = ExtResource("4_vb7cg")
+texture_sheet = ExtResource("5_r7khi")
+east_face = 0
+south_face = 0
+bottom_face = 0
+
+[node name="lights" type="Node3D" parent="MAP/Tiles"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MAP/Tiles/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
+omni_range = 3.0
