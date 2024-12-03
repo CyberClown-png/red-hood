@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbuho66mu1s23"]
+[gd_scene load_steps=3 format=3 uid="uid://dbuho66mu1s23"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cwj4s"]
+[ext_resource type="Script" path="res://scripts/input_system.gd" id="2_8rjeq"]
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -10,10 +11,15 @@ script = ExtResource("1_cwj4s")
 
 [node name="frontRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -2)
+collision_mask = 3
 
 [node name="backRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 2)
+hit_from_inside = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_energy = 0.25
 omni_range = 2.0
+
+[node name="InputSystem" type="Node3D" parent="."]
+script = ExtResource("2_8rjeq")

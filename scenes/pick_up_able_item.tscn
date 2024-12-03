@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bst1xdlkpsv4w"]
+
+[ext_resource type="Script" path="res://scripts/pick_up_able_item.gd" id="1_cixrb"]
+[ext_resource type="Texture2D" uid="uid://bxiusuf7txiho" path="res://icon.svg" id="2_23tkn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7kv6"]
+size = Vector3(1.16483, 1.17542, 0.147897)
+
+[node name="PickUpAbleItem" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_cixrb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00666809, 0.00115967, -0.00260618)
+shape = SubResource("BoxShape3D_t7kv6")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+texture = ExtResource("2_23tkn")
