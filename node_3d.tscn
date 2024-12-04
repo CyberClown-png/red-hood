@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qv5oaf30fh4h"]
+[gd_scene load_steps=12 format=3 uid="uid://qv5oaf30fh4h"]
 
 [ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
 [ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="2_jxouv"]
@@ -7,6 +7,8 @@
 [ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="4_vb7cg"]
 [ext_resource type="Texture2D" uid="uid://cmdp44b5jt2yr" path="res://addons/level_block/tileset.png" id="5_r7khi"]
 [ext_resource type="PackedScene" uid="uid://bst1xdlkpsv4w" path="res://scenes/pick_up_able_item.tscn" id="7_6nuq0"]
+[ext_resource type="Texture2D" uid="uid://bxiusuf7txiho" path="res://icon.svg" id="8_76jyq"]
+[ext_resource type="Script" path="res://scripts/pick_up_able_item.gd" id="8_dr1nl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
 shader = ExtResource("2_21lab")
@@ -14,6 +16,9 @@ shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.0
 shader_parameter/u_dither_size = 1
 shader_parameter/u_dither_tex = ExtResource("2_jxouv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64k4k"]
+size = Vector3(0.137756, 1.20258, 1.18835)
 
 [node name="Node3D" type="Node3D"]
 
@@ -117,5 +122,24 @@ omni_range = 3.0
 
 [node name="Items" type="Node3D" parent="."]
 
-[node name="pickUpAbleItem" parent="Items" instance=ExtResource("7_6nuq0")]
+[node name="Key" parent="Items" instance=ExtResource("7_6nuq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844781, 1, -0.979581)
+is_pickable = null
+interaction_text = null
+required_item = null
+
+[node name="Lock" type="StaticBody3D" parent="Items"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("8_dr1nl")
+is_pickable = false
+interaction_text = "lock interaction"
+required_item = "Key"
+
+[node name="Sprite3D" type="Sprite3D" parent="Items/Lock"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.96276, 1, 2)
+texture = ExtResource("8_76jyq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9448, 0.991364, 2.00433)
+shape = SubResource("BoxShape3D_64k4k")

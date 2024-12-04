@@ -24,7 +24,5 @@ func _physics_process(delta: float) -> void:
 
 		if result:
 			var clicked_object = result.collider
-			print(clicked_object.has_method("interact"))
 			if clicked_object and clicked_object.has_method("interact"):
-				print("clicked_object")
 				clicked_object.interact()

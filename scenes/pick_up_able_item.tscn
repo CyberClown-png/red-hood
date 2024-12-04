@@ -8,8 +8,11 @@ size = Vector3(1.16483, 1.17542, 0.147897)
 
 [node name="PickUpAbleItem" type="StaticBody3D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_cixrb")
+is_pickable = null
+interaction_text = null
+required_item = null
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00666809, 0.00115967, -0.00260618)
