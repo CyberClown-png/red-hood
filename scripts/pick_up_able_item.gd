@@ -4,11 +4,16 @@ extends Node3D
 @export var interaction_text: String
 @export var required_item: String
 
+@export var inventory_name: String = ""
+@export var inventory_icon: Texture = null 
+
+
 func interact():
 	if is_pickable:
 		print("Item picked up!", self.name)
-		InventoryManager.add_item(self.name)
-		queue_free()  # Убираем объект
+		InventoryManager.add_item(self)
+		self.visible=false
+		#queue_free()  # Убираем объект
 	else:
 		print(interaction_text)
 		if required_item && !InventoryManager.has_item(required_item):

@@ -5,11 +5,11 @@ extends Node3D
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("pick item") and front_ray.is_colliding():
+	if Input.is_action_just_pressed("pick item") :
 		var mouse_position = get_viewport().get_mouse_position()
 		
 		var from = camera.project_ray_origin(mouse_position)
-		var to = from + camera.project_ray_normal(mouse_position) * 1000
+		var to = from + camera.project_ray_normal(mouse_position)
 		
 		
 		

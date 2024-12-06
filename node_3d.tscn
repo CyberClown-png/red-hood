@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://qv5oaf30fh4h"]
+[gd_scene load_steps=15 format=3 uid="uid://qv5oaf30fh4h"]
 
+[ext_resource type="Script" path="res://gameManager.gd" id="1_8du4d"]
 [ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
 [ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="2_jxouv"]
 [ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="3_d4dkp"]
@@ -9,18 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://bst1xdlkpsv4w" path="res://scenes/pick_up_able_item.tscn" id="7_6nuq0"]
 [ext_resource type="Texture2D" uid="uid://bxiusuf7txiho" path="res://icon.svg" id="8_76jyq"]
 [ext_resource type="Script" path="res://scripts/pick_up_able_item.gd" id="8_dr1nl"]
+[ext_resource type="Texture2D" uid="uid://m746g1u6eh6l" path="res://1111.png" id="10_a8w6c"]
+[ext_resource type="Texture2D" uid="uid://bkktcs8dbpjeb" path="res://11.png" id="10_sm1xp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
 shader = ExtResource("2_21lab")
 shader_parameter/u_contrast = 1.0
-shader_parameter/u_offset = 0.0
-shader_parameter/u_dither_size = 1
+shader_parameter/u_offset = 0.2
+shader_parameter/u_dither_size = 2
 shader_parameter/u_dither_tex = ExtResource("2_jxouv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_64k4k"]
 size = Vector3(0.137756, 1.20258, 1.18835)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_8du4d")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_l32fb")
@@ -29,11 +33,92 @@ offset_bottom = 40.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(900, 600)
+size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_uya1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.873628, 1, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
+
+[node name="Control" type="Control" parent="SubViewportContainer/SubViewport/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -141.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_a8w6c")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -5.0
+offset_right = 516.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_sm1xp")
+expand_mode = 2
 
 [node name="MAP" type="Node3D" parent="."]
 
@@ -124,9 +209,6 @@ omni_range = 3.0
 
 [node name="Key" parent="Items" instance=ExtResource("7_6nuq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844781, 1, -0.979581)
-is_pickable = null
-interaction_text = null
-required_item = null
 
 [node name="Lock" type="StaticBody3D" parent="Items"]
 collision_layer = 2
