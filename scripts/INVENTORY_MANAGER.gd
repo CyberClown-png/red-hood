@@ -3,6 +3,8 @@ extends Node
 var MAX_SLOTS = 7
 var emptySlotTexture = preload("res://11.png")
 
+var selected_item_index: int = -1
+
 var items: Array = []
 @onready var inventory: HBoxContainer = null
 
@@ -35,17 +37,40 @@ func _update_inventory_ui():
 			texture_rect.texture = items[i].inventory_icon  
 		else:
 			texture_rect.texture = emptySlotTexture  
-		
+			
+		if i == selected_item_index:
+			texture_rect.modulate = Color(1, 1, 0)
+		else:
+			texture_rect.modulate = Color(1, 1, 1)
+
 
 
 func set_inventory_container(inventory_container: Node):
 	inventory = inventory_container
 
 func _initialize_slots():
-	for i in range(MAX_SLOTS):
-		var texture_rect = TextureRect.new()
-		texture_rect.name = "slot_%d" % i
-		texture_rect.texture = emptySlotTexture  
-		texture_rect.expand = true
-		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		inventory.add_child(texture_rect)
+	var i = 0
+	for child in inventory.get_children():
+		child.connect("gui_input", _on_slot_clicked.bind(i))
+		i+=1
+
+func _on_slot_clicked(event, slot_index):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if selected_item_index == slot_index:
+				selected_item_index = -1
+				print("item deselected")
+			else:
+				_select_item(slot_index)
+				print("Selected item:", selected_item_index)
+			_update_inventory_ui()
+
+
+
+func _select_item(slot_index):
+	if slot_index < items.size():
+		selected_item_index = slot_index
+		var selected_item = items[selected_item_index]
+		_update_inventory_ui() 
+	else:
+		print("No item in this slot")

@@ -13,11 +13,12 @@ func interact():
 		print("Item picked up!", self.name)
 		InventoryManager.add_item(self)
 		self.visible=false
-		#queue_free()  # Убираем объект
+		self.collision_layer &= ~2
 	else:
 		print(interaction_text)
-		if required_item && !InventoryManager.has_item(required_item):
-			print("you need a ", required_item)
-		else:
-			queue_free()
-			InventoryManager.remove_item_by_id(required_item)
+		if InventoryManager.selected_item_index!=-1:
+			if required_item && !InventoryManager.items[InventoryManager.selected_item_index]:
+				print("you need a ", required_item)
+			else:
+				queue_free()
+				InventoryManager.remove_item_by_id(required_item)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://qv5oaf30fh4h"]
 
 [ext_resource type="Script" path="res://gameManager.gd" id="1_8du4d"]
-[ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
-[ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="2_jxouv"]
+[ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_72ni5"]
 [ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="3_d4dkp"]
+[ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="3_g1gfj"]
 [ext_resource type="PackedScene" uid="uid://dbuho66mu1s23" path="res://scenes/player.tscn" id="3_uya1f"]
 [ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="4_vb7cg"]
 [ext_resource type="Texture2D" uid="uid://cmdp44b5jt2yr" path="res://addons/level_block/tileset.png" id="5_r7khi"]
@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://m746g1u6eh6l" path="res://1111.png" id="10_a8w6c"]
 [ext_resource type="Texture2D" uid="uid://bkktcs8dbpjeb" path="res://11.png" id="10_sm1xp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
-shader = ExtResource("2_21lab")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1foq"]
+shader = ExtResource("2_72ni5")
 shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.2
 shader_parameter/u_dither_size = 2
-shader_parameter/u_dither_tex = ExtResource("2_jxouv")
+shader_parameter/u_dither_tex = ExtResource("3_g1gfj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_64k4k"]
 size = Vector3(0.137756, 1.20258, 1.18835)
@@ -27,7 +27,7 @@ size = Vector3(0.137756, 1.20258, 1.18835)
 script = ExtResource("1_8du4d")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_l32fb")
+material = SubResource("ShaderMaterial_f1foq")
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -62,6 +62,7 @@ anchor_bottom = 1.0
 offset_top = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 1
 texture = ExtResource("10_a8w6c")
 expand_mode = 2
 
