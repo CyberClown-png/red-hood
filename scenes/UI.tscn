@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhleyyw2yd4e"]
+
+[ext_resource type="Texture2D" uid="uid://m746g1u6eh6l" path="res://1111.png" id="1_bu43c"]
+[ext_resource type="Texture2D" uid="uid://bkktcs8dbpjeb" path="res://11.png" id="2_javoj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -141.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="TextureRect" type="TextureRect" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 1
+texture = ExtResource("1_bu43c")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -5.0
+offset_right = 516.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_javoj")
+expand_mode = 2
