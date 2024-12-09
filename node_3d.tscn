@@ -1,58 +1,47 @@
-[gd_scene load_steps=18 format=3 uid="uid://qv5oaf30fh4h"]
+[gd_scene load_steps=22 format=3 uid="uid://qv5oaf30fh4h"]
 
-[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_8du4d"]
-[ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_72ni5"]
+[ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_21lab"]
+[ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="2_u75kx"]
 [ext_resource type="Script" path="res://addons/level_block/level_block_node.gd" id="3_d4dkp"]
-[ext_resource type="Texture2D" uid="uid://cqflt7p8h1pa3" path="res://sharerTextures/bayer2tile16.png" id="3_g1gfj"]
 [ext_resource type="PackedScene" uid="uid://dbuho66mu1s23" path="res://scenes/player.tscn" id="3_uya1f"]
 [ext_resource type="Material" uid="uid://c71yladfjhgud" path="res://addons/level_block/default_material.tres" id="4_vb7cg"]
-[ext_resource type="PackedScene" uid="uid://djhleyyw2yd4e" path="res://scenes/UI.tscn" id="5_46fex"]
 [ext_resource type="Texture2D" uid="uid://cmdp44b5jt2yr" path="res://addons/level_block/tileset.png" id="5_r7khi"]
-[ext_resource type="PackedScene" uid="uid://bst1xdlkpsv4w" path="res://scenes/pick_up_able_item.tscn" id="7_6nuq0"]
-[ext_resource type="Texture2D" uid="uid://bxiusuf7txiho" path="res://icon.svg" id="8_76jyq"]
-[ext_resource type="Script" path="res://scripts/pick_up_able_item.gd" id="8_dr1nl"]
-[ext_resource type="Shader" path="res://shader/Outline.gdshader" id="12_b0oug"]
+[ext_resource type="PackedScene" uid="uid://dysyciemtfuin" path="res://single-person-bed_2K_f98a00e3-2633-49f9-b23c-fbda1c2e4e83.blend" id="7_uscp5"]
+[ext_resource type="PackedScene" uid="uid://22moeqkjr160" path="res://medieval-table_2K_8f49f45c-9adb-424b-8f14-1db742a94fa8.blend" id="8_fsiyq"]
+[ext_resource type="PackedScene" uid="uid://6bt542lfx8em" path="res://scissors_ee08cbad-28a3-4c53-ba09-bf5349f951c4.blend" id="8_luhj1"]
+[ext_resource type="PackedScene" uid="uid://bgfwmnykt7rg0" path="res://wooden-chair_7e3b0410-80e3-4e6b-aee8-20c4e7a20b07.blend" id="9_aw20k"]
+[ext_resource type="PackedScene" uid="uid://dg18jbjtihsvs" path="res://hair-pin-01_083bc555-af55-43a3-ae64-b9cdf556da53.blend" id="9_drxku"]
+[ext_resource type="PackedScene" uid="uid://bonodl7nifgu0" path="res://danish-vintage-corner-cabinet_2K_ee0a8424-6f58-48cc-b3bf-0f112380c60d.blend" id="10_88ixb"]
+[ext_resource type="PackedScene" uid="uid://bcp0l7pbyaetm" path="res://old-leather-book_1K_a418aa38-efe7-4297-8770-23f5fd48eb66.blend" id="10_crbrr"]
+[ext_resource type="PackedScene" uid="uid://dxyed4dmxoo7w" path="res://Pillars.blend" id="11_5oqye"]
+[ext_resource type="PackedScene" uid="uid://cl1j8egnw66nv" path="res://wooden_bookshelf_worn_1k.blend" id="11_efsen"]
+[ext_resource type="PackedScene" uid="uid://dcbo8hheu0ids" path="res://twenty_books_2K_f3a985ad-8135-4bac-900b-4ee5b8f98406.blend" id="12_d6q5w"]
+[ext_resource type="PackedScene" uid="uid://bv22048ty1cf8" path="res://office-trash-bin_0_5K_1701b41a-933c-417e-b9e8-41643680ff1b.blend" id="13_bmevm"]
+[ext_resource type="PackedScene" uid="uid://8pddj5l5uimo" path="res://pear-cut-diamond_09195900-b091-4225-af03-057377877486.blend" id="14_mxpiy"]
+[ext_resource type="PackedScene" uid="uid://ccefq4t03ro8g" path="res://fireplace_2.tscn" id="19_v5da5"]
+[ext_resource type="PackedScene" uid="uid://cjqknxha8iqt" path="res://Rug.blend" id="20_qvubq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1foq"]
-shader = ExtResource("2_72ni5")
-shader_parameter/u_contrast = 1.0
-shader_parameter/u_offset = 0.2
-shader_parameter/u_dither_size = 2
-shader_parameter/u_dither_tex = ExtResource("3_g1gfj")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_64k4k"]
-size = Vector3(0.137756, 1.20258, 1.18835)
-
-[sub_resource type="PrismMesh" id="PrismMesh_fwit8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cirl1"]
-render_priority = 0
-shader = ExtResource("12_b0oug")
-shader_parameter/normal_threshold = 0.1
-shader_parameter/depth_threshold = 0.05
-shader_parameter/depth_artifact_correction_coef = 2.0
-shader_parameter/outline_color = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijt2u"]
-next_pass = SubResource("ShaderMaterial_cirl1")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l32fb"]
+shader = ExtResource("2_21lab")
+shader_parameter/u_contrast = 0.955
+shader_parameter/u_offset = -0.055
+shader_parameter/u_dither_size = 1
+shader_parameter/u_dither_tex = ExtResource("2_u75kx")
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_8du4d")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_f1foq")
-offset_right = 40.0
-offset_bottom = 40.0
+material = SubResource("ShaderMaterial_l32fb")
+offset_right = 400.0
+offset_bottom = 320.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1280, 720)
+size = Vector2i(400, 320)
 render_target_update_mode = 4
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_uya1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.873628, 1, 0)
-
-[node name="UI" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_46fex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
 [node name="MAP" type="Node3D" parent="."]
 
@@ -65,6 +54,7 @@ material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 north_face = 0
 east_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock2" type="Node3D" parent="MAP/Tiles"]
@@ -74,6 +64,7 @@ material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 north_face = 0
 west_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock3" type="Node3D" parent="MAP/Tiles"]
@@ -82,6 +73,7 @@ script = ExtResource("3_d4dkp")
 material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 north_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock4" type="Node3D" parent="MAP/Tiles"]
@@ -90,6 +82,7 @@ script = ExtResource("3_d4dkp")
 material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 east_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock5" type="Node3D" parent="MAP/Tiles"]
@@ -97,6 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
 script = ExtResource("3_d4dkp")
 material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock6" type="Node3D" parent="MAP/Tiles"]
@@ -105,6 +99,7 @@ script = ExtResource("3_d4dkp")
 material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 west_face = 3
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock7" type="Node3D" parent="MAP/Tiles"]
@@ -113,6 +108,7 @@ script = ExtResource("3_d4dkp")
 material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 south_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock8" type="Node3D" parent="MAP/Tiles"]
@@ -122,6 +118,7 @@ material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 south_face = 0
 west_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="LevelBlock9" type="Node3D" parent="MAP/Tiles"]
@@ -131,6 +128,7 @@ material = ExtResource("4_vb7cg")
 texture_sheet = ExtResource("5_r7khi")
 east_face = 0
 south_face = 0
+top_face = 4
 bottom_face = 0
 
 [node name="lights" type="Node3D" parent="MAP/Tiles"]
@@ -139,30 +137,74 @@ bottom_face = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 2)
 omni_range = 3.0
 
-[node name="Items" type="Node3D" parent="."]
+[node name="Bed" parent="MAP/Tiles" instance=ExtResource("7_uscp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.740757, 0.0237192, 4.28115)
 
-[node name="Key" parent="Items" instance=ExtResource("7_6nuq0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844781, 1, -0.979581)
+[node name="Scissors" parent="MAP/Tiles" instance=ExtResource("8_luhj1")]
+transform = Transform3D(0.786924, 0, -0.61705, 0, 1, 0, 0.61705, 0, 0.786924, -1.08767, 0.678435, -0.529353)
 
-[node name="Lock" type="StaticBody3D" parent="Items"]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("8_dr1nl")
-is_pickable = false
-interaction_text = "lock interaction"
-required_item = "Key"
+[node name="Hairpin" parent="MAP/Tiles" instance=ExtResource("9_drxku")]
+transform = Transform3D(1.70072, 0, -1.0524, 0, 2, 0, 1.0524, 0, 1.70072, -0.94769, 0.663063, -0.507366)
 
-[node name="Sprite3D" type="Sprite3D" parent="Items/Lock"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.96276, 1, 2)
-texture = ExtResource("8_76jyq")
+[node name="Detailed Book" parent="MAP/Tiles" instance=ExtResource("10_crbrr")]
+transform = Transform3D(0.965926, -0.258758, 0.00560546, 0, 0.0216578, 0.999765, -0.258819, -0.965699, 0.0209199, -0.663089, 0.705603, -0.187044)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Lock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9448, 0.991364, 2.00433)
-shape = SubResource("BoxShape3D_64k4k")
+[node name="Pillars" parent="MAP/Tiles" instance=ExtResource("11_5oqye")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 2, -3.96997, 0, 4.11195)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Items"]
+[node name="Pillars2" parent="MAP/Tiles" instance=ExtResource("11_5oqye")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 2, -3.97917, -0.0583733, 1.69889)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Items/StaticBody3D"]
-transform = Transform3D(0.230039, 0.75687, 0.611743, -0.663415, 0.581867, -0.470437, -0.712013, -0.29762, 0.635971, -2.67226, 1.13663, 0)
-mesh = SubResource("PrismMesh_fwit8")
-surface_material_override/0 = SubResource("StandardMaterial3D_ijt2u")
+[node name="Table" parent="MAP" instance=ExtResource("8_fsiyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438405, 0, -0.257698)
+
+[node name="Chair" parent="MAP" instance=ExtResource("9_aw20k")]
+transform = Transform3D(-0.998157, 0, -0.0606828, 0, 1, 0, 0.0606828, 0, -0.998157, -0.395564, -0.237397, 0.351054)
+
+[node name="Cabinet" parent="MAP" instance=ExtResource("10_88ixb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5158, 0, -0.496722)
+
+[node name="wooden_bookshelf_worn_1k" parent="MAP" instance=ExtResource("11_efsen")]
+transform = Transform3D(1, 0, 0, 0, 0.96, 0, 0, 0, 1, -2.90705, 0, 4.62541)
+
+[node name="Books10" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(-0.0567102, 0, -0.998391, 0, 1, 0, 0.998391, 0, -0.0567102, -2.92813, 1.22285, 4.55202)
+
+[node name="Books9" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(-0.0567102, 0, -0.998391, 0, 1, 0, 0.998391, 0, -0.0567102, -2.36438, 1.22353, 4.57474)
+
+[node name="Books8" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(-0.0567102, 0, -0.998391, 0, 1, 0, 0.998391, 0, -0.0567102, -2.33935, 0.920712, 4.57474)
+
+[node name="Books7" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(0.130699, 0, 0.991422, 0, 1, 0, -0.991422, 0, 0.130699, -3.37931, 0.921582, 4.38391)
+
+[node name="Books6" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(0.130699, 0, 0.991422, 0, 1, 0, -0.991422, 0, 0.130699, -2.84305, 0.643491, 4.38391)
+
+[node name="Books5" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(0.0426604, 0, 0.99909, 0, 1, 0, -0.99909, 0, 0.0426604, -3.41115, 0.657951, 4.38415)
+
+[node name="Books4" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(0.0426604, 0, 0.99909, 0, 1, 0, -0.99909, 0, 0.0426604, -2.96595, 0.373642, 4.38415)
+
+[node name="Books3" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(0.0426604, 0, 0.99909, 0, 1, 0, -0.99909, 0, 0.0426604, -3.48083, 0.381864, 4.39883)
+
+[node name="Books2" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, -2.85481, 1.57961, 4.4103)
+
+[node name="Books" parent="MAP" instance=ExtResource("12_d6q5w")]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, -3.42429, 1.57781, 4.40235)
+
+[node name="Gemstone" parent="MAP" instance=ExtResource("14_mxpiy")]
+transform = Transform3D(7, 0, 0, 0, 6.43889, -2.74602, 0, 2.74602, 6.43889, -2.45802, 0.63832, -0.296703)
+
+[node name="TrashCan" parent="MAP" instance=ExtResource("13_bmevm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907023, 0, -0.541396)
+
+[node name="Fireplace2" parent="." instance=ExtResource("19_v5da5")]
+transform = Transform3D(-0.00329524, 0, -0.799993, 0, 0.8, 0, 0.799993, 0, -0.00329524, 1.52867, 1.78814e-07, 2.30689)
+
+[node name="Rug" parent="." instance=ExtResource("20_qvubq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.804913, 0, 1.79779)
