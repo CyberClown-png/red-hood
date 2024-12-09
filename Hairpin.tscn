@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://5ut27j05qiwc"]
-
-[ext_resource type="PackedScene" uid="uid://dg18jbjtihsvs" path="res://hair-pin-01_083bc555-af55-43a3-ae64-b9cdf556da53.blend" id="1_7wbtv"]
-
-[node name="upload" instance=ExtResource("1_7wbtv")]
-
-[node name="POLYFACE_029" parent="Hair pin-01" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
