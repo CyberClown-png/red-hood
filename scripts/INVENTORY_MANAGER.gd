@@ -1,7 +1,6 @@
 extends Node
 
-var MAX_SLOTS = 7
-var emptySlotTexture = preload("res://11.png")
+var MAX_SLOTS = 6
 
 var selected_item_index: int = -1
 
@@ -31,12 +30,14 @@ func has_item(item_id: String) -> bool:
 	return false	
 
 func _update_inventory_ui():
-	for i in range(MAX_SLOTS):
+	for i in MAX_SLOTS:
 		var texture_rect = inventory.get_child(i)
 		if i < items.size():
 			texture_rect.texture = items[i].inventory_icon  
 		else:
-			texture_rect.texture = emptySlotTexture  
+			texture_rect.texture = null  
+			
+			texture_rect.queue_redraw()
 			
 		if i == selected_item_index:
 			texture_rect.modulate = Color(1, 1, 0)
