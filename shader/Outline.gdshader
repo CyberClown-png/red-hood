@@ -6,7 +6,7 @@ render_mode unshaded,depth_draw_always ;
 	Inspired by Yui Kinomoto @arlez80, lukky_nl (YT), Robin Seibold (YT)
 	Uses Sobel Edge detection on a normal and depth texture
 	Written by William Li (LoudFlameLava)
-	
+
 	MIT License
 */
 
@@ -39,13 +39,13 @@ float edge_value_normal(sampler2D normal_tex, vec2 uv, vec2 pixel_size, mat3 sob
 
     for (int y = -2; y <= 2; y++) {
         for (int x = -2; x <= 2; x++) {
-            if (x == 0 && y == 0) continue; 
+            if (x == 0 && y == 0) continue;
             vec3 neighbor = texture(normal_tex, uv + vec2(float(x), float(y)) * pixel_size).rgb;
-            float distance_factor = 1.0 / (abs(float(x)) + abs(float(y))); 
+            float distance_factor = 1.0 / (abs(float(x)) + abs(float(y)));
             output += length(normal - neighbor) * distance_factor;
         }
     }
-    
+
     return output;
 }
 
@@ -61,7 +61,7 @@ float get_depth(sampler2D depth_tex, vec2 uv, mat4 inv_projection_matrix) {
 float edge_value_depth(sampler2D depth_tex, vec2 uv, vec2 pixel_size, mat3 sobel, mat4 inv_projection_matrix){
     float output = 0.0;
     float depth = get_depth(depth_tex, uv, inv_projection_matrix);
-    
+
     for (int y = -2; y <= 2; y++) {
         for (int x = -2; x <= 2; x++) {
             if (x == 0 && y == 0) continue;
@@ -70,7 +70,7 @@ float edge_value_depth(sampler2D depth_tex, vec2 uv, vec2 pixel_size, mat3 sobel
             output += abs(depth - neighbor_depth) / depth * distance_factor;
         }
     }
-    
+
     return output;
 }
 

@@ -10,7 +10,7 @@ uniform int u_dither_size;
 
 void fragment()
 {
-	float tolerance = 0.2;
+	float tolerance = 0.01;
     vec2 screen_size = vec2(textureSize(TEXTURE, 0)) / float(u_dither_size);
     vec2 screen_sample_uv = floor(UV * screen_size) / screen_size;
     vec3 screen_col = texture(TEXTURE, screen_sample_uv).rgb;
@@ -28,6 +28,7 @@ void fragment()
     threshold = threshold * 0.99 + 0.005;
 
     vec3 final_col;
+	
     if (lum < threshold) {
         final_col = vec3(0.0); // Чёрный
     } else if (screen_col.r > screen_col.g + tolerance  && screen_col.r > screen_col.b + tolerance ) {
