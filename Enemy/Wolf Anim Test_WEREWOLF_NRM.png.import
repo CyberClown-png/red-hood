@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cgfgd22ikqyjg"
+path.s3tc="res://.godot/imported/Wolf Anim Test_WEREWOLF_NRM.png-20a1c07b59f7196fee7948660d84127a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1e22e2386d685f3bdc4d02156896ff56"
+}
+
+[deps]
+
+source_file="res://Enemy/Wolf Anim Test_WEREWOLF_NRM.png"
+dest_files=["res://.godot/imported/Wolf Anim Test_WEREWOLF_NRM.png-20a1c07b59f7196fee7948660d84127a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Enemy/Wolf Anim Test_WEREWOLF_NRM.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
