@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djhleyyw2yd4e"]
+[gd_scene load_steps=3 format=3 uid="uid://djhleyyw2yd4e"]
 
-[ext_resource type="Texture2D" uid="uid://nxlbwo2djyu1" path="res://img/inventory_screen.png" id="1_i1gia"]
+[ext_resource type="Texture2D" uid="uid://dnyavcw3es7gk" path="res://img/inventory_screen_final.png" id="1_0f6ux"]
+[ext_resource type="Texture2D" uid="uid://bkktcs8dbpjeb" path="res://11.png" id="2_n2cdp"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -26,7 +27,7 @@ offset_top = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 1
-texture = ExtResource("1_i1gia")
+texture = ExtResource("1_0f6ux")
 expand_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2"]
@@ -35,37 +36,46 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_right = 10.0
+offset_left = -444.0
+offset_top = 4.0
+offset_right = 432.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 31
 
 [node name="TextureRect" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
+texture = ExtResource("2_n2cdp")
 expand_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+texture = ExtResource("2_n2cdp")
 expand_mode = 2
 
 [node name="TextureRect3" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+texture = ExtResource("2_n2cdp")
 expand_mode = 2
 
 [node name="TextureRect4" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+texture = ExtResource("2_n2cdp")
 expand_mode = 2
 
 [node name="TextureRect5" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+texture = ExtResource("2_n2cdp")
 expand_mode = 2
 
 [node name="TextureRect6" type="TextureRect" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+texture = ExtResource("2_n2cdp")
 expand_mode = 2

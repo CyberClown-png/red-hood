@@ -1,14 +1,18 @@
 extends Node3D
 
-@export var is_pickable: bool = true
+@export var is_pickable: bool = false
+
 @export var interaction_text: String
 @export var required_item: String
 
 @export var inventory_icon: Texture = null 
 
+@export var mergable: bool = false
+@export var mergeItem: StaticBody3D
 
 func interact():
 	if is_pickable:
+			
 		print("Item picked up!", self.name)
 		InventoryManager.add_item(self)
 		self.visible=false
@@ -22,4 +26,4 @@ func interact():
 			else:
 				queue_free()
 				InventoryManager.remove_item_by_id(required_item)
-				
+			

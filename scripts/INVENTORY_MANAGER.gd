@@ -44,8 +44,6 @@ func _update_inventory_ui():
 		else:
 			texture_rect.modulate = Color(1, 1, 1)
 
-
-
 func set_inventory_container(inventory_container: Node):
 	inventory = inventory_container
 
@@ -54,6 +52,7 @@ func _initialize_slots():
 	for child in inventory.get_children():
 		child.connect("gui_input", _on_slot_clicked.bind(i))
 		i+=1
+	_update_inventory_ui()	
 
 func _on_slot_clicked(event, slot_index):
 	if event is InputEventMouseButton and event.pressed:
@@ -61,12 +60,13 @@ func _on_slot_clicked(event, slot_index):
 			if selected_item_index == slot_index:
 				selected_item_index = -1
 				print("item deselected")
-			else:
+			elif selected_item_index == -1:
 				_select_item(slot_index)
 				print("Selected item:", selected_item_index)
+			else :
+				_interact_items(selected_item_index, slot_index)
+				selected_item_index = -1
 			_update_inventory_ui()
-
-
 
 func _select_item(slot_index):
 	if slot_index < items.size():
@@ -75,3 +75,18 @@ func _select_item(slot_index):
 		_update_inventory_ui() 
 	else:
 		print("No item in this slot")
+
+func _interact_items(item_index1, item_index2):
+	var item1 = InventoryManager.items[item_index1]
+	var item2 = InventoryManager.items[item_index2]
+	
+	if _can_interact(item1,item2):
+		remove_item_by_id(item1.name)
+		remove_item_by_id(item2.name)
+		add_item(item1.mergeItem)
+	
+
+func _can_interact(item1,item2)->bool:
+	if item1.required_item == item2.name || item2.required_item == item1.name:
+			return true
+	return false
