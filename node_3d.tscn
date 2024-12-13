@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qv5oaf30fh4h"]
+[gd_scene load_steps=22 format=3 uid="uid://qv5oaf30fh4h"]
 
 [ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_8du4d"]
 [ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_72ni5"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c3wj6vohurj4k" path="res://img/Wolf_Flower.png" id="12_loqla"]
 [ext_resource type="Texture2D" uid="uid://cy06j12lyp147" path="res://img/Fish_Strinh.png" id="12_nunn6"]
 [ext_resource type="Texture2D" uid="uid://c5xbhfif7e0kb" path="res://img/Scissors.png" id="13_arwv1"]
+[ext_resource type="Script" path="res://scripts/food.gd" id="17_3xv5a"]
+[ext_resource type="Texture2D" uid="uid://de17hhaomelii" path="res://img/Bread.png" id="18_51pbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1foq"]
 shader = ExtResource("2_72ni5")
@@ -26,6 +28,9 @@ shader_parameter/u_dither_tex = ExtResource("3_g1gfj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_64k4k"]
 size = Vector3(0.137756, 1.20258, 1.18835)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvnkk"]
+size = Vector3(0.23999, 1.16211, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_8du4d")
@@ -172,6 +177,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("8_dr1nl")
 interaction_text = "lock interaction"
+required_item = "Key"
 
 [node name="Sprite3D" type="Sprite3D" parent="Items/Lock"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0464845, 0, 0)
@@ -179,3 +185,20 @@ texture = ExtResource("8_76jyq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Lock"]
 shape = SubResource("BoxShape3D_64k4k")
+
+[node name="Bread" type="StaticBody3D" parent="Items"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.79152, 1, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("17_3xv5a")
+is_pickable = true
+interaction_text = "bread"
+inventory_icon = ExtResource("18_51pbp")
+
+[node name="Sprite3D" type="Sprite3D" parent="Items/Bread"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("18_51pbp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Bread"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404053, -0.0205078, 0)
+shape = SubResource("BoxShape3D_fvnkk")

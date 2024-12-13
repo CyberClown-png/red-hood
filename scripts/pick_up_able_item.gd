@@ -19,7 +19,7 @@ func interact():
 		self.collision_layer &= ~2
 	else:
 		print(interaction_text)
-		if InventoryManager.selected_item_index!=-1:
+		if InventoryManager.selected_item_index != -1:
 			
 			if  !InventoryManager.items[InventoryManager.selected_item_index].name == required_item:
 				print("you need a ", required_item)
