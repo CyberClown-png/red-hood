@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qv5oaf30fh4h"]
+[gd_scene load_steps=25 format=3 uid="uid://qv5oaf30fh4h"]
 
 [ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_8du4d"]
 [ext_resource type="Shader" path="res://shader/dither.gdshader" id="2_72ni5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scripts/food.gd" id="17_3xv5a"]
 [ext_resource type="Texture2D" uid="uid://de17hhaomelii" path="res://img/Bread.png" id="18_51pbp"]
 [ext_resource type="Script" path="res://scripts/bookshelf.gd" id="19_qctho"]
+[ext_resource type="Script" path="res://scripts/bed.gd" id="20_0s3og"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1foq"]
 shader = ExtResource("2_72ni5")
@@ -32,6 +33,9 @@ size = Vector3(0.137756, 1.20258, 1.18835)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvnkk"]
 size = Vector3(0.23999, 1.16211, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsb3d"]
+size = Vector3(1.28522, 1.20856, 0.178955)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_8du4d")
@@ -140,10 +144,12 @@ omni_range = 3.0
 
 [node name="Key" parent="Items" instance=ExtResource("7_6nuq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.844781, 1, -0.979581)
+act_for_interaction = 1
 is_pickable = true
 
 [node name="Diamond" parent="Items" node_paths=PackedStringArray("mergeItem") instance=ExtResource("7_6nuq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15522, 1, -0.979581)
+act_for_interaction = 1
 is_pickable = true
 required_item = "Paper"
 inventory_icon = ExtResource("10_0w7qy")
@@ -152,6 +158,7 @@ mergeItem = NodePath("../Thread")
 
 [node name="Paper" parent="Items" node_paths=PackedStringArray("mergeItem") instance=ExtResource("7_6nuq0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -0.919754)
+act_for_interaction = 2
 is_pickable = true
 required_item = "Diamond"
 inventory_icon = ExtResource("11_32wj7")
@@ -169,7 +176,7 @@ is_pickable = true
 inventory_icon = ExtResource("13_arwv1")
 
 [node name="Thread" parent="Items" instance=ExtResource("7_6nuq0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15522, 1, -2.97958)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.88747, 1, 0.0204201)
 inventory_icon = ExtResource("12_nunn6")
 
 [node name="Lock" type="StaticBody3D" parent="Items"]
@@ -218,3 +225,18 @@ texture = ExtResource("8_76jyq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Items/bookshelf"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404053, -0.0205078, 0)
 shape = SubResource("BoxShape3D_fvnkk")
+
+[node name="Bed" type="StaticBody3D" parent="Items"]
+transform = Transform3D(-3.09086e-08, -0.707107, -0.707107, -3.09086e-08, 0.707107, -0.707107, 1, 0, -4.37114e-08, -3.48253, 0.730559, 4)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("20_0s3og")
+act_for_interaction = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Items/Bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("8_76jyq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Bed"]
+transform = Transform3D(1, 3.81917e-13, 0, 0, 1, 0, 0, -1.66165e-20, 1, 0.0127869, 0.040375, -0.0155027)
+shape = SubResource("BoxShape3D_rsb3d")

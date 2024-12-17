@@ -2,6 +2,7 @@ extends Node3D
 
 var game_over_condition = 0
 
+
 func _ready():
 	prepare_inventory()
 	
@@ -10,6 +11,7 @@ func prepare_inventory():
 	var canvas = $SubViewportContainer/SubViewport/UI
 	var control = canvas.get_node("Control2")
 	var hbox = control.get_node("HBoxContainer")
+
 
 
 	InventoryManager.set_inventory_container(hbox)
